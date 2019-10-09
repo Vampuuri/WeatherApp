@@ -99,7 +99,7 @@
 		7409574C234DEF9600059194 /* Weather App */ = {
 			isa = PBXGroup;
 			children = (
-				7409577B234E004F00059194 /* ViewControllers */,
+				7409577E234E014F00059194 /* ViewControllers */,
 				7409574D234DEF9600059194 /* AppDelegate.swift */,
 				7409574F234DEF9600059194 /* ViewController.swift */,
 				74095751234DEF9600059194 /* Main.storyboard */,
@@ -128,7 +128,7 @@
 			path = "Weather AppUITests";
 			sourceTree = "<group>";
 		};
-		7409577B234E004F00059194 /* ViewControllers */ = {
+		7409577E234E014F00059194 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				7409577C234E008100059194 /* CurrentWeatherViewController.swift */,
