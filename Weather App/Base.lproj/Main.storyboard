@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Current weather-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Weather_App" customModuleProvider="target" sceneMemberID="viewController">
@@ -28,7 +28,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="mok-64-sd8"/>
+                    <tabBarItem key="tabBarItem" title="Current weather" id="mok-64-sd8"/>
                     <connections>
                         <outlet property="view" destination="8bC-Xf-vdC" id="rz0-ad-6Hk"/>
                     </connections>
@@ -37,7 +37,7 @@
             </objects>
             <point key="canvasLocation" x="-439" y="224"/>
         </scene>
-        <!--Item-->
+        <!--Weather Forecast-->
         <scene sceneID="wl4-rR-qp0">
             <objects>
                 <viewController id="Oev-TO-buU" sceneMemberID="viewController">
@@ -56,13 +56,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="NT9-y8-6Rd"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Le0-jc-b5f"/>
+                    <tabBarItem key="tabBarItem" title="Weather Forecast" id="Le0-jc-b5f"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IYu-C2-ew6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="239" y="224"/>
         </scene>
-        <!--Item-->
+        <!--City-->
         <scene sceneID="udP-qn-diY">
             <objects>
                 <viewController id="sNO-2u-hn2" sceneMemberID="viewController">
@@ -81,7 +81,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="LF7-va-Ohu"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="vo2-6a-iXy"/>
+                    <tabBarItem key="tabBarItem" title="City" id="vo2-6a-iXy"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b2I-yC-8t0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -93,6 +93,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="prD-AS-FIO" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9pb-eW-itW">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
