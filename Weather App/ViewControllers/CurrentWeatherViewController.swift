@@ -11,4 +11,8 @@ import UIKit
 
 class CurrentWeatherViewController: UIViewController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NSLog("Current Weather")
+    }
 }

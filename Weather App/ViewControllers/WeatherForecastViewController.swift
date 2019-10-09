@@ -11,4 +11,8 @@ import UIKit
 
 class WeatherForecastViewController: UIViewController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NSLog("Weather Forecast")
+    }
 }
