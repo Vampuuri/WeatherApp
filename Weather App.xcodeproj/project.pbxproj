@@ -15,6 +15,7 @@
 		74095763234DEFA000059194 /* Weather_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74095762234DEFA000059194 /* Weather_AppTests.swift */; };
 		7409576E234DEFA000059194 /* Weather_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7409576D234DEFA000059194 /* Weather_AppUITests.swift */; };
 		7409577D234E008100059194 /* CurrentWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7409577C234E008100059194 /* CurrentWeatherViewController.swift */; };
+		74095780234E026F00059194 /* WeatherForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7409577F234E026F00059194 /* WeatherForecastViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		7409576D234DEFA000059194 /* Weather_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather_AppUITests.swift; sourceTree = "<group>"; };
 		7409576F234DEFA000059194 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7409577C234E008100059194 /* CurrentWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherViewController.swift; sourceTree = "<group>"; };
+		7409577F234E026F00059194 /* WeatherForecastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecastViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				7409577C234E008100059194 /* CurrentWeatherViewController.swift */,
+				7409577F234E026F00059194 /* WeatherForecastViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74095780234E026F00059194 /* WeatherForecastViewController.swift in Sources */,
 				74095750234DEF9600059194 /* ViewController.swift in Sources */,
 				7409574E234DEF9600059194 /* AppDelegate.swift in Sources */,
 				7409577D234E008100059194 /* CurrentWeatherViewController.swift in Sources */,
