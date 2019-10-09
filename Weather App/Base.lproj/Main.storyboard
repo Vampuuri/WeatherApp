@@ -40,7 +40,7 @@
         <!--Weather Forecast-->
         <scene sceneID="wl4-rR-qp0">
             <objects>
-                <viewController id="Oev-TO-buU" sceneMemberID="viewController">
+                <viewController id="Oev-TO-buU" customClass="WeatherForecastViewController" customModule="Weather_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sk6-3S-bTu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
