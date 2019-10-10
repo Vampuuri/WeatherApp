@@ -16,9 +16,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // fetch command for example:
     // http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID={APIKEY}
+    
+    func fetchUrl(url : String) {
+        let config = URLSessionConfiguration.default
+        
+        let session = URLSession(configuration: config)
+        
+        let url : URL? = URL(string: url)
+        
+        let task = session.dataTask(with: url!, completionHandler: doneFetching);
+        
+        // Starts the task, spawns a new thread and calls the callback function
+        task.resume();
+    }
+    
+    func doneFetching(data: Data?, response: URLResponse?, error: Error?) {
+        let resstr = String(data: data!, encoding: String.Encoding.utf8)
+        
+        // Execute stuff in UI thread
+        DispatchQueue.main.async(execute: {() in
+            NSLog(resstr!)
+        })
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        fetchUrl(url: "https://api.openweathermap.org/data/2.5/weather?q=Tampere&APPID=\(APIKEY)")
+        
         return true
     }
 
