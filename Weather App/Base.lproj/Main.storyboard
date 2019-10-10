@@ -52,6 +52,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Current weather" id="mok-64-sd8"/>
                     <connections>
+                        <outlet property="cityLabel" destination="qWh-Tf-7QA" id="Bs0-fX-g5e"/>
+                        <outlet property="iconImageView" destination="1o9-Y4-14d" id="Kf8-7S-kTB"/>
+                        <outlet property="temperatureLabel" destination="A5s-4e-uTx" id="ENu-OU-xbq"/>
                         <outlet property="view" destination="8bC-Xf-vdC" id="rz0-ad-6Hk"/>
                     </connections>
                 </viewController>
