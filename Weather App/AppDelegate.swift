@@ -12,9 +12,10 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let APIKEY = "60881c23fa92d269a2479d5378c082d7"
     
-    // GITHUB TEST CHANGE
-
+    // fetch command for example:
+    // http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID={APIKEY}
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
