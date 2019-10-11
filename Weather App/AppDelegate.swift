@@ -49,7 +49,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             (output) in
             
             if let json = output {
-                print(json)
+                let city = json["name"] as! String
+                let objectTemperature = json["main"] as? [String : Any]
+                let objectWeather = json["weather"] as? [[String : Any]]
+                let temperature = objectTemperature!["temp"] as! Double
+                let weatherTypeString = objectWeather![0]["main"] as! String
+                
+                print(city)
+                print(temperature)
+                print(weatherTypeString)
+                
             } else {
                 print("Something went wrong...")
             }
