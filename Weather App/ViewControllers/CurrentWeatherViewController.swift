@@ -20,5 +20,6 @@ class CurrentWeatherViewController: UIViewController {
         
         self.cityLabel.text = "Tampere"
         self.temperatureLabel.text = "0 \u{00B0}C"
+        self.iconImageView.image = UIImage(named: "clear")
     }
 }
