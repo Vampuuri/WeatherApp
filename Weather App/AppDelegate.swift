@@ -31,7 +31,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func doneFetching(data: Data?, response: URLResponse?, error: Error?) {
-        print(data)
+        do {
+            let json = try JSONSerialization.jsonObject(with: data!, options: []) as? [String : Any]
+            print(json!["weather"] as? [[String:Any]])
+        } catch let error {
+            print(error.localizedDescription)
+        }
         
         /*let resstr = String(data: data!, encoding: String.Encoding.utf8)
         
