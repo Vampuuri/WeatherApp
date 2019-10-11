@@ -48,7 +48,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         fetchUrl(url: "https://api.openweathermap.org/data/2.5/weather?q=Tampere&APPID=\(APIKEY)") {
             (output) in
             
-            print(output)
+            if let json = output {
+                print(json)
+            } else {
+                print("Something went wrong...")
+            }
         }
         
         return true
