@@ -19,28 +19,26 @@ class CurrentWeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NSLog("Current Weather")
-        
-        self.updateWeather(WeatherObject(city: "Tampere", temperature: 10.0, weatherType: "Rain"))
     }
     
     func updateWeather(_ weather: WeatherObject) {
         self.weather = weather
-        self.cityLabel.text = weather.city
-        self.temperatureLabel.text = "\(weather.temperature) \u{00B0}C"
+        self.cityLabel.text = self.weather!.city
+        self.temperatureLabel.text = String(format: "%.1f \u{00B0}C", self.weather!.temperature)
         
         var image: UIImage?
         
-        if weather.weatherType == WeatherType.clear {
+        if self.weather!.weatherType == WeatherType.clear {
             image = UIImage(named: "clear")
-        } else if weather.weatherType == WeatherType.cloudy {
+        } else if self.weather!.weatherType == WeatherType.cloudy {
             image = UIImage(named: "cloudy")
-        } else if weather.weatherType == WeatherType.partlyCloudy {
+        } else if self.weather!.weatherType == WeatherType.partlyCloudy {
             image = UIImage(named: "partlyCloudy")
-        } else if weather.weatherType == WeatherType.rainy {
+        } else if self.weather!.weatherType == WeatherType.rainy {
             image = UIImage(named: "rainy")
-        } else if weather.weatherType == WeatherType.snow {
+        } else if self.weather!.weatherType == WeatherType.snow {
             image = UIImage(named: "snow")
-        } else if weather.weatherType == WeatherType.thunder {
+        } else if self.weather!.weatherType == WeatherType.thunder {
             image = UIImage(named: "thunder")
         } else {
             image = UIImage(named: "misty")
