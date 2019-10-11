@@ -17,39 +17,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // fetch command for example:
     // http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID={APIKEY}
     
-    func fetchUrl(url : String) {
+    func fetchUrl(url : String, completionBlock: @escaping (Optional<[String : Any]>) -> Void) {
         let config = URLSessionConfiguration.default
-        
         let session = URLSession(configuration: config)
-        
         let url : URL? = URL(string: url)
         
-        let task = session.dataTask(with: url!, completionHandler: doneFetching);
+        let task = session.dataTask(with: url!) {
+            (data: Data?, response: URLResponse?, error: Error?) in
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options: []) as? [String : Any]
+                completionBlock(json)
+            } catch let error {
+                print(error.localizedDescription)
+                completionBlock(nil)
+            }
+        }
         
         // Starts the task, spawns a new thread and calls the callback function
         task.resume();
     }
     
     func doneFetching(data: Data?, response: URLResponse?, error: Error?) {
-        do {
-            let json = try JSONSerialization.jsonObject(with: data!, options: []) as? [String : Any]
-            print(json!["weather"] as? [[String:Any]])
-        } catch let error {
-            print(error.localizedDescription)
-        }
-        
-        /*let resstr = String(data: data!, encoding: String.Encoding.utf8)
-        
-        // Execute stuff in UI thread
-        DispatchQueue.main.async(execute: {() in
-            NSLog(resstr!)
-        })*/
+
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        fetchUrl(url: "https://api.openweathermap.org/data/2.5/weather?q=Tampere&APPID=\(APIKEY)")
+        fetchUrl(url: "https://api.openweathermap.org/data/2.5/weather?q=Tampere&APPID=\(APIKEY)") {
+            (output) in
+            
+            print(output)
+        }
         
         return true
     }
