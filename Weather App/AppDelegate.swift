@@ -14,6 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     let APIKEY = "60881c23fa92d269a2479d5378c082d7"
     
+    var currentWeatherViewController: CurrentWeatherViewController?
+    var weatherForecastViewController: WeatherForecastViewController?
+    var cityViewController: CityViewController?
+    
     // fetch command for example:
     // http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID={APIKEY}
     
@@ -45,6 +49,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        var tabBarController = self.window!.rootViewController as! UITabBarController
+        self.currentWeatherViewController = tabBarController.viewControllers![0] as? CurrentWeatherViewController
+        self.weatherForecastViewController = tabBarController.viewControllers![1] as? WeatherForecastViewController
+        self.cityViewController = tabBarController.viewControllers![2] as? CityViewController
+        
         fetchUrl(url: "https://api.openweathermap.org/data/2.5/weather?q=Tampere&APPID=\(APIKEY)") {
             (output) in
             
@@ -55,8 +64,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let temperature = objectTemperature!["temp"] as! Double
                 let weatherTypeString = objectWeather![0]["main"] as! String
                 
-                var weatherObject = WeatherObject(city: city, temperature: temperature + 273.15, weatherType: weatherTypeString)
+                var weatherObject = WeatherObject(city: city, temperature: temperature - 273.15, weatherType: weatherTypeString)
                 print(weatherObject)
+                
+                self.currentWeatherViewController!.updateWeather(weatherObject)
                 
             } else {
                 print("Something went wrong...")
