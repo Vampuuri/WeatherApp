@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+enum WeatherType {
+    case clear
+    case cloudy
+    case partlyCloudy
+    case rainy
+    case thunder
+    case snow
+}
+
