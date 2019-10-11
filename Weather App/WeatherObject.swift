@@ -28,4 +28,20 @@ class WeatherObject {
         self.temperature = temperature
         self.weatherType = weatherType
     }
+    
+    class func getWeatherTypeByString(_ str: String) -> WeatherType {
+        if str == "Clear" {
+            return WeatherType.clear
+        } else if str == "Clouds" {
+            return WeatherType.cloudy
+        } else if str == "Rain" || str == "Drizzle" {
+            return WeatherType.rainy
+        } else if str == "Thunderstorm" {
+            return WeatherType.thunder
+        } else if str == "Snow" {
+            return WeatherType.snow
+        } else {
+            return WeatherType.misty
+        }
+    }
 }
