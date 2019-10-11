@@ -31,12 +31,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func doneFetching(data: Data?, response: URLResponse?, error: Error?) {
-        let resstr = String(data: data!, encoding: String.Encoding.utf8)
+        print(data)
+        
+        /*let resstr = String(data: data!, encoding: String.Encoding.utf8)
         
         // Execute stuff in UI thread
         DispatchQueue.main.async(execute: {() in
             NSLog(resstr!)
-        })
+        })*/
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
