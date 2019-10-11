@@ -23,10 +23,10 @@ class WeatherObject {
     var temperature: Double
     var weatherType: WeatherType
     
-    init(city: String, temperature: Double, weatherType: WeatherType) {
+    init(city: String, temperature: Double, weatherType: String) {
         self.city = city
         self.temperature = temperature
-        self.weatherType = weatherType
+        self.weatherType = WeatherObject.getWeatherTypeByString(weatherType)
     }
     
     class func getWeatherTypeByString(_ str: String) -> WeatherType {
