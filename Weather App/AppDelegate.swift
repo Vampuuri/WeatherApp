@@ -55,9 +55,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let temperature = objectTemperature!["temp"] as! Double
                 let weatherTypeString = objectWeather![0]["main"] as! String
                 
-                print(city)
-                print(temperature)
-                print(weatherTypeString)
+                var weatherObject = WeatherObject(city: city, temperature: temperature + 273.15, weatherType: weatherTypeString)
+                print(weatherObject)
                 
             } else {
                 print("Something went wrong...")
