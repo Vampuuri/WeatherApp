@@ -17,3 +17,14 @@ enum WeatherType {
     case snow
 }
 
+class WeatherObject {
+    var city: String
+    var temperature: Double
+    var weatherType: WeatherType
+    
+    init(city: String, temperature: Double, weatherType: WeatherType) {
+        self.city = city
+        self.temperature = temperature
+        self.weatherType = weatherType
+    }
+}
