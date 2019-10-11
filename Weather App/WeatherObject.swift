@@ -15,6 +15,7 @@ enum WeatherType {
     case rainy
     case thunder
     case snow
+    case misty
 }
 
 class WeatherObject {
