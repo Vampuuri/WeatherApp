@@ -30,7 +30,9 @@ class WeatherObject: NSObject, NSCoding {
     }
     
     required init(coder decoder: NSCoder) {
-        
+        self.city = decoder.decodeObject(forKey: "city") as! String
+        self.temperature = decoder.decodeDouble(forKey: "temperature")
+        self.weatherType = decoder.decodeObject(forKey: "weatherType") as! WeatherType
     }
     
     func encode(with encoder: NSCoder) {
