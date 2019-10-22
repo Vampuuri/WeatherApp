@@ -21,8 +21,24 @@ class CurrentWeatherViewController: UIViewController {
         NSLog("Current Weather")
     }
     
-    func updateWeather(_ weather: WeatherObject) {
-        self.weather = weather
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        NSLog("Current Weather tab opened")
+        readWeatherFromFile()
+    }
+    
+    func readWeatherFromFile() {
+        do {
+            let data = try Data(contentsOf: URL(fileURLWithPath: self.getPathToFile("current")))
+            let wo = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as! WeatherObject
+            self.weather = wo
+            updateWeather()
+        } catch {
+            NSLog("Error: file not found")
+        }
+    }
+    
+    func updateWeather() {
         self.cityLabel.text = self.weather!.city
         self.temperatureLabel.text = String(format: "%.1f \u{00B0}C", self.weather!.temperature)
         
@@ -45,5 +61,18 @@ class CurrentWeatherViewController: UIViewController {
         }
         
         self.iconImageView.image = image
+    }
+    
+    func getPathToFile(_ filename: String) -> String {
+        // For now this code will return document directory
+        // Later it will be changed to cache
+        
+        let documentDirectories =
+            NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory,
+                                                FileManager.SearchPathDomainMask.userDomainMask, true)
+        let documentDirectory = documentDirectories[0]
+        let pathWithFileName = "\(documentDirectory)/\(filename).txt"
+        
+        return pathWithFileName
     }
 }
