@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum WeatherType {
+enum WeatherType: Int {
     case clear
     case cloudy
     case partlyCloudy
@@ -32,13 +32,13 @@ class WeatherObject: NSObject, NSCoding {
     required init(coder decoder: NSCoder) {
         self.city = decoder.decodeObject(forKey: "city") as! String
         self.temperature = decoder.decodeDouble(forKey: "temperature")
-        self.weatherType = decoder.decodeObject(forKey: "weatherType") as! WeatherType
+        self.weatherType = WeatherType(rawValue: (decoder.decodeInteger(forKey: "weatherType" )))!
     }
     
     func encode(with encoder: NSCoder) {
         encoder.encode(self.city, forKey: "city")
         encoder.encode(self.temperature, forKey: "temperature")
-        encoder.encode(self.weatherType, forKey: "weatherType")
+        encoder.encode(self.weatherType.rawValue, forKey: "weatherType")
     }
     
     class func getWeatherTypeByString(_ str: String) -> WeatherType {
