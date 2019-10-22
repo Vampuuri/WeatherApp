@@ -67,7 +67,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let weatherObject = WeatherObject(city: city, temperature: temperature - 273.15, weatherType: weatherTypeString)
                 print(weatherObject)
                 
-                self.currentWeatherViewController!.updateWeather(weatherObject)
+                // self.currentWeatherViewController!.updateWeather(weatherObject)
+                
+                do {
+                    let data = try NSKeyedArchiver.archivedData(withRootObject: weatherObject, requiringSecureCoding: false)
+                    try data.write(to: URL(fileURLWithPath: self.getPathToFile("current")))
+                } catch {
+                    NSLog("error")
+                }
+                
+                do {
+                    let data = try Data(contentsOf: URL(fileURLWithPath: self.getPathToFile("current")))
+                    let wo = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as! WeatherObject
+                    print(wo.city)
+                    print(wo.temperature)
+                    print(wo.weatherType)
+                } catch {
+                    NSLog("error")
+                }
                 
             } else {
                 print("Something went wrong...")
