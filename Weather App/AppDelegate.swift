@@ -100,7 +100,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func getPathToFile(_ filename: String) -> String {
-        return ""
+        // For now this code will return document directory
+        // Later it will be changed to cache
+        
+        let documentDirectories =
+            NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory,
+                                                FileManager.SearchPathDomainMask.userDomainMask, true)
+        
+        // Fetch the only document directory found in the array
+        let documentDirectory = documentDirectories[0]
+        let pathWithFileName = "\(documentDirectory)/\(filename)).txt"
+        
+        return pathWithFileName
     }
 
 }
