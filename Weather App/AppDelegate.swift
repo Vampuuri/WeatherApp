@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let temperature = objectTemperature!["temp"] as! Double
                 let weatherTypeString = objectWeather![0]["main"] as! String
                 
-                var weatherObject = WeatherObject(city: city, temperature: temperature - 273.15, weatherType: weatherTypeString)
+                let weatherObject = WeatherObject(city: city, temperature: temperature - 273.15, weatherType: weatherTypeString)
                 print(weatherObject)
                 
                 self.currentWeatherViewController!.updateWeather(weatherObject)
