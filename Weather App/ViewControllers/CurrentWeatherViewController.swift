@@ -34,7 +34,10 @@ class CurrentWeatherViewController: UIViewController {
             self.weather = wo
             updateWeather()
         } catch {
-            NSLog("Error: file not found")
+            NSLog("Error: file not found. Trying again in 0.5 seconds")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.readWeatherFromFile()
+            }
         }
     }
     
