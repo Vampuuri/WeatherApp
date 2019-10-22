@@ -18,7 +18,7 @@ enum WeatherType {
     case misty
 }
 
-class WeatherObject {
+class WeatherObject: NSObject, NSCoding {
     var city: String
     var temperature: Double
     var weatherType: WeatherType
