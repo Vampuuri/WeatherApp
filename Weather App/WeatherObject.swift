@@ -29,6 +29,14 @@ class WeatherObject: NSObject, NSCoding {
         self.weatherType = WeatherObject.getWeatherTypeByString(weatherType)
     }
     
+    required init(coder decoder: NSCoder) {
+        
+    }
+    
+    func encode(with encoder: NSCoder) {
+        
+    }
+    
     class func getWeatherTypeByString(_ str: String) -> WeatherType {
         if str == "Clear" {
             return WeatherType.clear
