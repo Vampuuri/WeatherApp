@@ -36,7 +36,9 @@ class WeatherObject: NSObject, NSCoding {
     }
     
     func encode(with encoder: NSCoder) {
-        
+        encoder.encode(self.city, forKey: "city")
+        encoder.encode(self.temperature, forKey: "temperature")
+        encoder.encode(self.weatherType, forKey: "weatherType")
     }
     
     class func getWeatherTypeByString(_ str: String) -> WeatherType {
