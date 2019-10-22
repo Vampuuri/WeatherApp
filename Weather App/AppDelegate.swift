@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        var tabBarController = self.window!.rootViewController as! UITabBarController
+        let tabBarController = self.window!.rootViewController as! UITabBarController
         self.currentWeatherViewController = tabBarController.viewControllers![0] as? CurrentWeatherViewController
         self.weatherForecastViewController = tabBarController.viewControllers![1] as? WeatherForecastViewController
         self.cityViewController = tabBarController.viewControllers![2] as? CityViewController
@@ -106,10 +106,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let documentDirectories =
             NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory,
                                                 FileManager.SearchPathDomainMask.userDomainMask, true)
-        
-        // Fetch the only document directory found in the array
         let documentDirectory = documentDirectories[0]
-        let pathWithFileName = "\(documentDirectory)/\(filename)).txt"
+        let pathWithFileName = "\(documentDirectory)/\(filename).txt"
         
         return pathWithFileName
     }
