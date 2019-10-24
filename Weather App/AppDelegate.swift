@@ -12,35 +12,11 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let APIKEY = "60881c23fa92d269a2479d5378c082d7"
     
     var currentWeatherViewController: CurrentWeatherViewController?
     var weatherForecastViewController: WeatherForecastViewController?
     var cityViewController: CityViewController?
     
-    // fetch command for example:
-    // http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID={APIKEY}
-    
-    func fetchUrl(url : String, completionBlock: @escaping (Optional<[String : Any]>) -> Void) {
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
-        let url : URL? = URL(string: url)
-        
-        let task = session.dataTask(with: url!) {
-            (data: Data?, response: URLResponse?, error: Error?) in
-            
-            do {
-                let json = try JSONSerialization.jsonObject(with: data!, options: []) as? [String : Any]
-                completionBlock(json)
-            } catch let error {
-                print(error.localizedDescription)
-                completionBlock(nil)
-            }
-        }
-        
-        // Starts the task, spawns a new thread and calls the callback function
-        task.resume();
-    }
     
     func doneFetching(data: Data?, response: URLResponse?, error: Error?) {
 
@@ -54,33 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.weatherForecastViewController = tabBarController.viewControllers![1] as? WeatherForecastViewController
         self.cityViewController = tabBarController.viewControllers![2] as? CityViewController
         
-        fetchUrl(url: "https://api.openweathermap.org/data/2.5/weather?q=Tampere&APPID=\(APIKEY)") {
-            (output) in
-            
-            if let json = output {
-                let city = json["name"] as! String
-                let objectTemperature = json["main"] as? [String : Any]
-                let objectWeather = json["weather"] as? [[String : Any]]
-                let temperature = objectTemperature!["temp"] as! Double
-                let weatherTypeString = objectWeather![0]["main"] as! String
-                
-                let weatherObject = WeatherObject(city: city, temperature: temperature - 273.15, weatherType: weatherTypeString)
-                weatherObject.dateAndTime = NSDate()
-                print(weatherObject)
-                
-                // self.currentWeatherViewController!.updateWeather(weatherObject)
-                
-                do {
-                    let data = try NSKeyedArchiver.archivedData(withRootObject: weatherObject, requiringSecureCoding: false)
-                    try data.write(to: URL(fileURLWithPath: FilePathFinder.getPathToDirectoryFile("current")))
-                } catch {
-                    NSLog("Error: could not write a file")
-                }
-                
-            } else {
-                print("Something went wrong...")
-            }
-        }
+        WeatherFetcher.fetchCurrentWeather(city: "Tampere")
         
         return true
     }
