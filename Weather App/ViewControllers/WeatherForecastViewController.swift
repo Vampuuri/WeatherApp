@@ -18,17 +18,22 @@ class WeatherForecastViewController: UIViewController, UITableViewDelegate, UITa
         super.viewDidLoad()
         NSLog("Weather Forecast")
         
-        var w1 = WeatherObject(city: "Tampere", temperature: 10, weatherType: "Rain")
-        w1.dateAndTime = NSDate()
-        var w2 = WeatherObject(city: "Tampere", temperature: 6, weatherType: "Clouds")
-        w2.dateAndTime = NSDate()
-        var w3 = WeatherObject(city: "Tampere", temperature: 7, weatherType: "Rain")
-        w3.dateAndTime = NSDate()
-        
-        data = [w1, w2, w3]
-        
         tableView.delegate = self
         tableView.dataSource = self
+        readForecastFromFile()
+    }
+    
+    func readForecastFromFile() {
+        do {
+            let data = try Data(contentsOf: URL(fileURLWithPath: FilePathFinder.getPathToDirectoryFile("forecast")))
+            let forecast = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as! NSArray
+            self.data = forecast
+        } catch {
+            NSLog("Error: file not found. Trying again in 0.5 seconds")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.readForecastFromFile()
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,7 +45,12 @@ class WeatherForecastViewController: UIViewController, UITableViewDelegate, UITa
         let dataobject = data![indexPath[1]] as! WeatherObject
         
         cell.textLabel?.text = String(format: "\(dataobject.weatherType) %.1f \u{00B0}C", dataobject.temperature)
-        cell.detailTextLabel?.text = "\(dataobject.dateAndTime!)"
+        
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "dd/MM kk:mm"
+        
+        cell.detailTextLabel?.text = formatter.string(from: dataobject.dateAndTime! as Date)
         
         if dataobject.weatherType == WeatherType.Clear {
             cell.imageView?.image = UIImage(named: "clear")
