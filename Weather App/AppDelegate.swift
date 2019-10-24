@@ -71,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 do {
                     let data = try NSKeyedArchiver.archivedData(withRootObject: weatherObject, requiringSecureCoding: false)
-                    try data.write(to: URL(fileURLWithPath: self.getPathToFile("current")))
+                    try data.write(to: URL(fileURLWithPath: FilePathFinder.getPathToDirectoryFile("current")))
                 } catch {
                     NSLog("Error: could not write a file")
                 }
@@ -104,19 +104,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-
-    func getPathToFile(_ filename: String) -> String {
-        // For now this code will return document directory
-        // Later it will be changed to cache
-        
-        let documentDirectories =
-            NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory,
-                                                FileManager.SearchPathDomainMask.userDomainMask, true)
-        let documentDirectory = documentDirectories[0]
-        let pathWithFileName = "\(documentDirectory)/\(filename).txt"
-        
-        return pathWithFileName
     }
 
 }

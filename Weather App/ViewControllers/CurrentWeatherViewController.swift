@@ -24,12 +24,12 @@ class CurrentWeatherViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         NSLog("Current Weather tab opened")
-        readWeatherFromFile()
+        self.readWeatherFromFile()
     }
     
     func readWeatherFromFile() {
         do {
-            let data = try Data(contentsOf: URL(fileURLWithPath: self.getPathToFile("current")))
+            let data = try Data(contentsOf: URL(fileURLWithPath: FilePathFinder.getPathToDirectoryFile("current")))
             let wo = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as! WeatherObject
             self.weather = wo
             updateWeather()
@@ -64,18 +64,5 @@ class CurrentWeatherViewController: UIViewController {
         }
         
         self.iconImageView.image = image
-    }
-    
-    func getPathToFile(_ filename: String) -> String {
-        // For now this code will return document directory
-        // Later it will be changed to cache
-        
-        let documentDirectories =
-            NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory,
-                                                FileManager.SearchPathDomainMask.userDomainMask, true)
-        let documentDirectory = documentDirectories[0]
-        let pathWithFileName = "\(documentDirectory)/\(filename).txt"
-        
-        return pathWithFileName
     }
 }
