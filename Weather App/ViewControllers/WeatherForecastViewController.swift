@@ -36,8 +36,28 @@ class WeatherForecastViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "someID")
-        cell.textLabel?.text = "Hello \((data![indexPath[1]] as! WeatherObject).weatherType)"
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "someID")
+        let dataobject = data![indexPath[1]] as! WeatherObject
+        
+        cell.textLabel?.text = String(format: "\(dataobject.weatherType) %.1f \u{00B0}C", dataobject.temperature)
+        cell.detailTextLabel?.text = "\(dataobject.dateAndTime!)"
+        
+        if dataobject.weatherType == WeatherType.Clear {
+            cell.imageView?.image = UIImage(named: "clear")
+        } else if dataobject.weatherType == WeatherType.Cloudy {
+            cell.imageView?.image = UIImage(named: "cloudy")
+        } else if dataobject.weatherType == WeatherType.PartlyCloudy {
+            cell.imageView?.image = UIImage(named: "partlyCloudy")
+        } else if dataobject.weatherType == WeatherType.Rain {
+            cell.imageView?.image = UIImage(named: "rainy")
+        } else if dataobject.weatherType == WeatherType.Snow {
+            cell.imageView?.image = UIImage(named: "snow")
+        } else if dataobject.weatherType == WeatherType.Thunder {
+            cell.imageView?.image = UIImage(named: "thunder")
+        } else {
+            cell.imageView?.image = UIImage(named: "misty")
+        }
+        
         return cell
     }
 }
