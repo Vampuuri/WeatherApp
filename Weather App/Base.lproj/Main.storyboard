@@ -118,6 +118,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="City" id="0If-at-vbm"/>
                     <connections>
+                        <outlet property="tableView" destination="gth-QQ-Nus" id="M7X-6u-EeV"/>
                         <outlet property="view" destination="H62-mg-uE9" id="CmQ-lC-Bih"/>
                     </connections>
                 </viewController>
