@@ -31,7 +31,7 @@ class WeatherFetcher {
         task.resume();
     }
     
-    private class func fetchCurrentWeatherWithLocationPart(_ locationPart: String) {
+    private class func fetchCurrentWeather(_ locationPart: String) {
         let url = "https://api.openweathermap.org/data/2.5/weather?\(locationPart)&APPID=\(APIKEY)"
         
         fetchUrl(url: url) {
@@ -61,12 +61,12 @@ class WeatherFetcher {
         }
     }
     
-    class func fetchCurrentWeatherByCity(_ city: String) {
-        fetchCurrentWeatherWithLocationPart("q=\(city)")
+    class func fetchCurrentWeather(city: String) {
+        fetchCurrentWeather("q=\(city)")
     }
     
     class func fetchCurrentWeather(latitude: Double, longitude: Double) {
-        fetchCurrentWeatherWithLocationPart("lat=\(latitude)&lon=\(longitude)")
+        fetchCurrentWeather("lat=\(latitude)&lon=\(longitude)")
     }
     
     class func fetchWeatherForecast(city: String) {
