@@ -65,6 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let weatherTypeString = objectWeather![0]["main"] as! String
                 
                 let weatherObject = WeatherObject(city: city, temperature: temperature - 273.15, weatherType: weatherTypeString)
+                weatherObject.dateAndTime = NSDate()
                 print(weatherObject)
                 
                 // self.currentWeatherViewController!.updateWeather(weatherObject)
