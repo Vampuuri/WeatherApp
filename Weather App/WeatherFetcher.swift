@@ -46,7 +46,6 @@ class WeatherFetcher {
                 
                 let weatherObject = WeatherObject(city: city, temperature: temperature - 273.15, weatherType: weatherTypeString)
                 weatherObject.dateAndTime = NSDate()
-                print(weatherObject)
                 
                 do {
                     let data = try NSKeyedArchiver.archivedData(withRootObject: weatherObject, requiringSecureCoding: false)
@@ -97,23 +96,12 @@ class WeatherFetcher {
                 
                 let forecastNSArray = forecastArray as NSArray
                 
-                /**
-                
-                let objectTemperature = json["main"] as? [String : Any]
-                let objectWeather = json["weather"] as? [[String : Any]]
-                let temperature = objectTemperature!["temp"] as! Double
-                let weatherTypeString = objectWeather![0]["main"] as! String
-                
-                let weatherObject = WeatherObject(city: "", temperature: temperature - 273.15, weatherType: weatherTypeString)
-                weatherObject.dateAndTime = NSDate()
-                print(weatherObject)
-                
                 do {
-                    let data = try NSKeyedArchiver.archivedData(withRootObject: weatherObject, requiringSecureCoding: false)
-                    try data.write(to: URL(fileURLWithPath: FilePathFinder.getPathToDirectoryFile("current")))
+                    let data = try NSKeyedArchiver.archivedData(withRootObject: forecastNSArray, requiringSecureCoding: false)
+                    try data.write(to: URL(fileURLWithPath: FilePathFinder.getPathToDirectoryFile("forecast")))
                 } catch {
                     NSLog("Error: could not write a file")
-                }*/
+                }
                 
             } else {
                 print("Something went wrong...")
