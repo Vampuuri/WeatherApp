@@ -47,6 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         
         if let city = chosenCity, city != "" {
             WeatherFetcher.fetchCurrentWeather(city: city)
+            WeatherFetcher.fetchWeatherForecast(city: city)
         } else {
             self.locationManager?.requestLocation();
         }
@@ -78,6 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         if let location = didUpdateLocations.last {
             NSLog("Location found: \(location)")
             WeatherFetcher.fetchCurrentWeather(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            WeatherFetcher.fetchWeatherForecast(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         }
     }
     
