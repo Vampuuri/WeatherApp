@@ -76,7 +76,12 @@ class WeatherFetcher {
             (output) in
             
             if let json = output {
+                let formatter = DateFormatter()
+                formatter.locale = Locale(identifier: "en_US_POSIX")
+                formatter.dateFormat = "yyyy-MM-dd kk:mm:ss"
+                
                 let list = json["list"] as! [[String : Any]]
+                var forecastArray: Array<WeatherObject> = []
                 
                 for item in list {
                     let objectTemperature = item["main"] as? [String : Any]
@@ -85,8 +90,12 @@ class WeatherFetcher {
                     let weatherTypeString = objectWeather![0]["main"] as! String
                     let dateTimeString = item["dt_txt"] as! String
                     
-                    print("\(temperature) \(weatherTypeString) \(dateTimeString)")
+                    let weatherObject = WeatherObject(city: "", temperature: temperature - 273.15, weatherType: weatherTypeString)
+                    weatherObject.dateAndTime = formatter.date(from: dateTimeString) as NSDate?
+                    forecastArray.append(weatherObject)
                 }
+                
+                let forecastNSArray = forecastArray as NSArray
                 
                 /**
                 
