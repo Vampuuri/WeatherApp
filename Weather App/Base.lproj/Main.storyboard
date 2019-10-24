@@ -69,17 +69,30 @@
                     <view key="view" contentMode="scaleToFill" id="Umz-Ra-IyL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TXt-fj-2Lf">
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="TXt-fj-2Lf" firstAttribute="top" secondItem="ueh-8x-TD7" secondAttribute="top" id="8hr-C1-nFd"/>
+                            <constraint firstItem="TXt-fj-2Lf" firstAttribute="leading" secondItem="ueh-8x-TD7" secondAttribute="leading" id="n8T-ne-NaV"/>
+                            <constraint firstItem="ueh-8x-TD7" firstAttribute="trailing" secondItem="TXt-fj-2Lf" secondAttribute="trailing" id="pD4-ti-Ttd"/>
+                            <constraint firstItem="TXt-fj-2Lf" firstAttribute="bottom" secondItem="ueh-8x-TD7" secondAttribute="bottom" id="pgq-41-mTy"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ueh-8x-TD7"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Forecast" id="jt4-Yu-3wz"/>
                     <connections>
+                        <outlet property="tableView" destination="TXt-fj-2Lf" id="51p-1T-2IP"/>
                         <outlet property="view" destination="Umz-Ra-IyL" id="1PN-zp-rvd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cpJ-4a-6la" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="238" y="224"/>
+            <point key="canvasLocation" x="237.59999999999999" y="223.53823088455775"/>
         </scene>
         <!--City-->
         <scene sceneID="bmG-30-o1e">

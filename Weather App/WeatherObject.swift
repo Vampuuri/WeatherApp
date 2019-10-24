@@ -9,13 +9,13 @@
 import Foundation
 
 enum WeatherType: Int {
-    case clear
-    case cloudy
-    case partlyCloudy
-    case rainy
-    case thunder
-    case snow
-    case misty
+    case Clear
+    case Cloudy
+    case PartlyCloudy
+    case Rain
+    case Thunder
+    case Snow
+    case Misty
 }
 
 class WeatherObject: NSObject, NSCoding {
@@ -46,17 +46,17 @@ class WeatherObject: NSObject, NSCoding {
     
     class func getWeatherTypeByString(_ str: String) -> WeatherType {
         if str == "Clear" {
-            return WeatherType.clear
+            return WeatherType.Clear
         } else if str == "Clouds" {
-            return WeatherType.cloudy
+            return WeatherType.Cloudy
         } else if str == "Rain" || str == "Drizzle" {
-            return WeatherType.rainy
+            return WeatherType.Rain
         } else if str == "Thunderstorm" {
-            return WeatherType.thunder
+            return WeatherType.Thunder
         } else if str == "Snow" {
-            return WeatherType.snow
+            return WeatherType.Snow
         } else {
-            return WeatherType.misty
+            return WeatherType.Misty
         }
     }
 }

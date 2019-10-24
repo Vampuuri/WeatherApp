@@ -47,17 +47,17 @@ class CurrentWeatherViewController: UIViewController {
         
         var image: UIImage?
         
-        if self.weather!.weatherType == WeatherType.clear {
+        if self.weather!.weatherType == WeatherType.Clear {
             image = UIImage(named: "clear")
-        } else if self.weather!.weatherType == WeatherType.cloudy {
+        } else if self.weather!.weatherType == WeatherType.Cloudy {
             image = UIImage(named: "cloudy")
-        } else if self.weather!.weatherType == WeatherType.partlyCloudy {
+        } else if self.weather!.weatherType == WeatherType.PartlyCloudy {
             image = UIImage(named: "partlyCloudy")
-        } else if self.weather!.weatherType == WeatherType.rainy {
+        } else if self.weather!.weatherType == WeatherType.Rain {
             image = UIImage(named: "rainy")
-        } else if self.weather!.weatherType == WeatherType.snow {
+        } else if self.weather!.weatherType == WeatherType.Snow {
             image = UIImage(named: "snow")
-        } else if self.weather!.weatherType == WeatherType.thunder {
+        } else if self.weather!.weatherType == WeatherType.Thunder {
             image = UIImage(named: "thunder")
         } else {
             image = UIImage(named: "misty")
