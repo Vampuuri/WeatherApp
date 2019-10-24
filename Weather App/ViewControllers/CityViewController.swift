@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class CityViewController: UITableViewController {
+class CityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NSLog("City")

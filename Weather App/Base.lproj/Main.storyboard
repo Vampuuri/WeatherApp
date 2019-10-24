@@ -62,63 +62,43 @@
             </objects>
             <point key="canvasLocation" x="-439.19999999999999" y="223.53823088455775"/>
         </scene>
-        <!--Weather Forecast-->
-        <scene sceneID="gOw-v7-XqV">
+        <!--Forecast-->
+        <scene sceneID="Cs9-TA-H1e">
             <objects>
-                <tableViewController id="rEo-O2-pBO" customClass="WeatherForecastViewController" customModule="Weather_App" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="n6N-Ha-Sdc">
+                <viewController id="Kim-bT-hDH" customClass="WeatherForecastViewController" customModule="Weather_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Umz-Ra-IyL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Pp4-Gm-Lq9">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Pp4-Gm-Lq9" id="XKr-bs-Z08">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="rEo-O2-pBO" id="qcG-Cw-AVI"/>
-                            <outlet property="delegate" destination="rEo-O2-pBO" id="IpR-pL-F1c"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="Weather Forecast" id="II4-5L-6pf"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jur-pk-oeX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <viewLayoutGuide key="safeArea" id="ueh-8x-TD7"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Forecast" id="jt4-Yu-3wz"/>
+                    <connections>
+                        <outlet property="view" destination="Umz-Ra-IyL" id="1PN-zp-rvd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cpJ-4a-6la" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="238" y="224"/>
         </scene>
         <!--City-->
-        <scene sceneID="lHn-m9-KWl">
+        <scene sceneID="bmG-30-o1e">
             <objects>
-                <tableViewController id="2mE-oc-vIJ" customClass="CityViewController" customModule="Weather_App" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="BKg-tR-mOu">
+                <viewController id="Kxq-qI-r7i" customClass="CityViewController" customModule="Weather_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="H62-mg-uE9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="p2l-Hr-uL0">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="p2l-Hr-uL0" id="aZ7-NS-E79">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="2mE-oc-vIJ" id="4eV-rW-yJk"/>
-                            <outlet property="delegate" destination="2mE-oc-vIJ" id="bNB-N0-Lin"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="City" id="dao-LA-8by"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cTG-od-rTv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <viewLayoutGuide key="safeArea" id="FPo-H7-5wh"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="City" id="0If-at-vbm"/>
+                    <connections>
+                        <outlet property="view" destination="H62-mg-uE9" id="CmQ-lC-Bih"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NcB-D4-YXZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="924" y="224"/>
+            <point key="canvasLocation" x="913" y="224"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="vib-uu-fsw">
@@ -132,8 +112,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="YOy-a2-KWP"/>
-                        <segue destination="rEo-O2-pBO" kind="relationship" relationship="viewControllers" id="TZz-hn-arb"/>
-                        <segue destination="2mE-oc-vIJ" kind="relationship" relationship="viewControllers" id="0Tw-tO-Vc7"/>
+                        <segue destination="Kim-bT-hDH" kind="relationship" relationship="viewControllers" id="rHv-Dd-7UG"/>
+                        <segue destination="Kxq-qI-r7i" kind="relationship" relationship="viewControllers" id="vEB-bx-nHb"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="371-MT-j2A" userLabel="First Responder" sceneMemberID="firstResponder"/>
