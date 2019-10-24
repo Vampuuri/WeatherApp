@@ -25,6 +25,7 @@
 		7476AF7E235096760063AE0A /* misty.png in Resources */ = {isa = PBXBuildFile; fileRef = 7476AF78235096760063AE0A /* misty.png */; };
 		7476AF7F235096760063AE0A /* thunder.png in Resources */ = {isa = PBXBuildFile; fileRef = 7476AF79235096760063AE0A /* thunder.png */; };
 		7476AF812350A4080063AE0A /* WeatherObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7476AF802350A4080063AE0A /* WeatherObject.swift */; };
+		7488B5322361979100DE08E0 /* FilePathFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7488B5312361979100DE08E0 /* FilePathFinder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		7476AF78235096760063AE0A /* misty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = misty.png; sourceTree = "<group>"; };
 		7476AF79235096760063AE0A /* thunder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thunder.png; sourceTree = "<group>"; };
 		7476AF802350A4080063AE0A /* WeatherObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherObject.swift; sourceTree = "<group>"; };
+		7488B5312361979100DE08E0 /* FilePathFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePathFinder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 				74095754234DEFA000059194 /* Assets.xcassets */,
 				74095756234DEFA000059194 /* LaunchScreen.storyboard */,
 				74095759234DEFA000059194 /* Info.plist */,
+				7488B5312361979100DE08E0 /* FilePathFinder.swift */,
 			);
 			path = "Weather App";
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 			files = (
 				74095780234E026F00059194 /* WeatherForecastViewController.swift in Sources */,
 				74095782234E02FE00059194 /* CityViewController.swift in Sources */,
+				7488B5322361979100DE08E0 /* FilePathFinder.swift in Sources */,
 				74095750234DEF9600059194 /* ViewController.swift in Sources */,
 				7409574E234DEF9600059194 /* AppDelegate.swift in Sources */,
 				7409577D234E008100059194 /* CurrentWeatherViewController.swift in Sources */,
