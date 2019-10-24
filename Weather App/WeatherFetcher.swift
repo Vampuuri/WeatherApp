@@ -9,9 +9,9 @@
 import Foundation
 
 class WeatherFetcher {
-    private let APIKEY = "60881c23fa92d269a2479d5378c082d7"
+    private static let APIKEY = "60881c23fa92d269a2479d5378c082d7"
     
-    func fetchUrl(url : String, completionBlock: @escaping (Optional<[String : Any]>) -> Void) {
+    private class func fetchUrl(url : String, completionBlock: @escaping (Optional<[String : Any]>) -> Void) {
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         let url : URL? = URL(string: url)
@@ -31,19 +31,49 @@ class WeatherFetcher {
         task.resume();
     }
     
-    static func fetchCurrentWeather(city: String) {
+    private class func fetchCurrentWeatherWithLocationPart(_ locationPart: String) {
+        let url = "https://api.openweathermap.org/data/2.5/weather?\(locationPart)&APPID=\(APIKEY)"
         
+        fetchUrl(url: url) {
+            (output) in
+            
+            if let json = output {
+                let city = json["name"] as! String
+                let objectTemperature = json["main"] as? [String : Any]
+                let objectWeather = json["weather"] as? [[String : Any]]
+                let temperature = objectTemperature!["temp"] as! Double
+                let weatherTypeString = objectWeather![0]["main"] as! String
+                
+                let weatherObject = WeatherObject(city: city, temperature: temperature - 273.15, weatherType: weatherTypeString)
+                weatherObject.dateAndTime = NSDate()
+                print(weatherObject)
+                
+                do {
+                    let data = try NSKeyedArchiver.archivedData(withRootObject: weatherObject, requiringSecureCoding: false)
+                    try data.write(to: URL(fileURLWithPath: FilePathFinder.getPathToDirectoryFile("current")))
+                } catch {
+                    NSLog("Error: could not write a file")
+                }
+                
+            } else {
+                print("Something went wrong...")
+            }
+        }
     }
     
-    static func fetchCurrentWeather(longitude: Double, latitude: Double) {
+    class func fetchCurrentWeatherByCity(_ city: String) {
+        fetchCurrentWeatherWithLocationPart("q=\(city)")
+    }
+    
+    class func fetchCurrentWeather(latitude: Double, longitude: Double) {
+        fetchCurrentWeatherWithLocationPart("lat=\(latitude)&lon=\(longitude)")
+    }
+    
+    class func fetchWeatherForecast(city: String) {
         // Will be implemented later
     }
     
-    static func fetchWeatherForecast(city: String) {
-        
-    }
-    
-    static func fetchWeatherForecast(longitude: Double, latitude: Double) {
+    class func fetchWeatherForecast(latitude: Double, longitude: Double) {
         // Will be implemented later
     }
 }
