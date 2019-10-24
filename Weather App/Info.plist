@@ -41,5 +41,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>WeatherApp needs your location for most accurate experience</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>WeatherApp needs your location for most accurate experience</string>
 </dict>
 </plist>
