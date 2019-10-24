@@ -9,8 +9,7 @@
 import Foundation
 import UIKit
 
-class WeatherForecastViewController: UIViewController {
-    
+class WeatherForecastViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NSLog("Weather Forecast")
