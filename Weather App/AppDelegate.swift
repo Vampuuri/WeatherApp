@@ -35,9 +35,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         self.locationManager = CLLocationManager();
         self.locationManager?.requestAlwaysAuthorization();
         self.locationManager?.delegate = self;
-        self.locationManager?.requestLocation();
+        
+        fetchInitialWeatherData()
         
         return true
+    }
+    
+    func fetchInitialWeatherData() {
+        let defaultDB = UserDefaults.standard
+        let chosenCity = defaultDB.string(forKey: "city")
+        
+        if let city = chosenCity, city != "" {
+            WeatherFetcher.fetchCurrentWeather(city: city)
+        } else {
+            self.locationManager?.requestLocation();
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
