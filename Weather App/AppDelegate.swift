@@ -37,8 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         self.locationManager?.delegate = self;
         self.locationManager?.requestLocation();
         
-        WeatherFetcher.fetchCurrentWeather(city: "Tampere")
-        
         return true
     }
 
@@ -67,6 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
     func locationManager(_ : CLLocationManager,didUpdateLocations: [CLLocation]) {
         if let location = didUpdateLocations.last {
             NSLog("Location found: \(location)")
+            WeatherFetcher.fetchCurrentWeather(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         }
     }
     
