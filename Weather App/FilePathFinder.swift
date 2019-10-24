@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+class FilePathFinder {
+    static func getPathToDirectoryFile(_ fileName: String) -> String {
+        return ""
+    }
+}
