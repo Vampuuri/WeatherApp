@@ -69,11 +69,54 @@ class WeatherFetcher {
         fetchCurrentWeather("lat=\(latitude)&lon=\(longitude)")
     }
     
+    private class func fetchWeatherForecast(_ locationPart: String) {
+        let url = "https://api.openweathermap.org/data/2.5/forecast?\(locationPart)&APPID=\(APIKEY)"
+        
+        fetchUrl(url: url) {
+            (output) in
+            
+            if let json = output {
+                let list = json["list"] as! [[String : Any]]
+                
+                for item in list {
+                    let objectTemperature = item["main"] as? [String : Any]
+                    let objectWeather = item["weather"] as? [[String : Any]]
+                    let temperature = objectTemperature!["temp"] as! Double
+                    let weatherTypeString = objectWeather![0]["main"] as! String
+                    let dateTimeString = item["dt_txt"] as! String
+                    
+                    print("\(temperature) \(weatherTypeString) \(dateTimeString)")
+                }
+                
+                /**
+                
+                let objectTemperature = json["main"] as? [String : Any]
+                let objectWeather = json["weather"] as? [[String : Any]]
+                let temperature = objectTemperature!["temp"] as! Double
+                let weatherTypeString = objectWeather![0]["main"] as! String
+                
+                let weatherObject = WeatherObject(city: "", temperature: temperature - 273.15, weatherType: weatherTypeString)
+                weatherObject.dateAndTime = NSDate()
+                print(weatherObject)
+                
+                do {
+                    let data = try NSKeyedArchiver.archivedData(withRootObject: weatherObject, requiringSecureCoding: false)
+                    try data.write(to: URL(fileURLWithPath: FilePathFinder.getPathToDirectoryFile("current")))
+                } catch {
+                    NSLog("Error: could not write a file")
+                }*/
+                
+            } else {
+                print("Something went wrong...")
+            }
+        }
+    }
+    
     class func fetchWeatherForecast(city: String) {
-        // Will be implemented later
+        fetchWeatherForecast("q=\(city)")
     }
     
     class func fetchWeatherForecast(latitude: Double, longitude: Double) {
-        // Will be implemented later
+        fetchWeatherForecast("lat=\(latitude)&lon=\(longitude)")
     }
 }
