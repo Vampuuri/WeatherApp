@@ -22,6 +22,7 @@ class WeatherObject: NSObject, NSCoding {
     var city: String
     var temperature: Double
     var weatherType: WeatherType
+    var dateAndTime: NSDate?
     
     init(city: String, temperature: Double, weatherType: String) {
         self.city = city
