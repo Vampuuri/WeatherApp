@@ -34,12 +34,14 @@ class WeatherObject: NSObject, NSCoding {
         self.city = decoder.decodeObject(forKey: "city") as! String
         self.temperature = decoder.decodeDouble(forKey: "temperature")
         self.weatherType = WeatherType(rawValue: (decoder.decodeInteger(forKey: "weatherType" )))!
+        self.dateAndTime = decoder.decodeObject(forKey: "dateAndTime") as? NSDate
     }
     
     func encode(with encoder: NSCoder) {
         encoder.encode(self.city, forKey: "city")
         encoder.encode(self.temperature, forKey: "temperature")
         encoder.encode(self.weatherType.rawValue, forKey: "weatherType")
+        encoder.encode(self.dateAndTime, forKey: "dateAndTime")
     }
     
     class func getWeatherTypeByString(_ str: String) -> WeatherType {
