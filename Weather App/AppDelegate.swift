@@ -13,6 +13,7 @@ import CoreLocation
 class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate {
 
     var window: UIWindow?
+    var locationManager: CLLocationManager?
     
     var currentWeatherViewController: CurrentWeatherViewController?
     var weatherForecastViewController: WeatherForecastViewController?
@@ -30,6 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         self.currentWeatherViewController = tabBarController.viewControllers![0] as? CurrentWeatherViewController
         self.weatherForecastViewController = tabBarController.viewControllers![1] as? WeatherForecastViewController
         self.cityViewController = tabBarController.viewControllers![2] as? CityViewController
+        
+        self.locationManager = CLLocationManager();
+        self.locationManager?.requestAlwaysAuthorization();
+        self.locationManager?.delegate = self;
+        self.locationManager?.requestLocation();
         
         WeatherFetcher.fetchCurrentWeather(city: "Tampere")
         
