@@ -26,6 +26,7 @@
 		7476AF7F235096760063AE0A /* thunder.png in Resources */ = {isa = PBXBuildFile; fileRef = 7476AF79235096760063AE0A /* thunder.png */; };
 		7476AF812350A4080063AE0A /* WeatherObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7476AF802350A4080063AE0A /* WeatherObject.swift */; };
 		7488B5322361979100DE08E0 /* FilePathFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7488B5312361979100DE08E0 /* FilePathFinder.swift */; };
+		7488B5342361A31100DE08E0 /* WeatherFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7488B5332361A31100DE08E0 /* WeatherFetcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		7476AF79235096760063AE0A /* thunder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thunder.png; sourceTree = "<group>"; };
 		7476AF802350A4080063AE0A /* WeatherObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherObject.swift; sourceTree = "<group>"; };
 		7488B5312361979100DE08E0 /* FilePathFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePathFinder.swift; sourceTree = "<group>"; };
+		7488B5332361A31100DE08E0 /* WeatherFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 				74095756234DEFA000059194 /* LaunchScreen.storyboard */,
 				74095759234DEFA000059194 /* Info.plist */,
 				7488B5312361979100DE08E0 /* FilePathFinder.swift */,
+				7488B5332361A31100DE08E0 /* WeatherFetcher.swift */,
 			);
 			path = "Weather App";
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7488B5342361A31100DE08E0 /* WeatherFetcher.swift in Sources */,
 				74095780234E026F00059194 /* WeatherForecastViewController.swift in Sources */,
 				74095782234E02FE00059194 /* CityViewController.swift in Sources */,
 				7488B5322361979100DE08E0 /* FilePathFinder.swift in Sources */,
