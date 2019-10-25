@@ -12,6 +12,7 @@ import UIKit
 class CityViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     var cities = ["Use GPS", "Helsinki", "Tampere", "Turku", "Oulu"]
+    var askFetchForNewData: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +48,8 @@ class CityViewController: UIViewController, UITableViewDelegate, UITableViewData
         let defaultDB = UserDefaults.standard
         defaultDB.set(useCity, forKey: "city")
         defaultDB.synchronize()
+        
+        askFetchForNewData!()
     }
 
     

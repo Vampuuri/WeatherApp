@@ -32,6 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         self.weatherForecastViewController = tabBarController.viewControllers![1] as? WeatherForecastViewController
         self.cityViewController = tabBarController.viewControllers![2] as? CityViewController
         
+        self.cityViewController!.askFetchForNewData = self.fetchInitialWeatherData
+        
         self.locationManager = CLLocationManager();
         self.locationManager?.requestAlwaysAuthorization();
         self.locationManager?.delegate = self;
@@ -42,6 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
     }
     
     func fetchInitialWeatherData() {
+        print("fetching data...")
         let defaultDB = UserDefaults.standard
         let chosenCity = defaultDB.string(forKey: "city")
         
