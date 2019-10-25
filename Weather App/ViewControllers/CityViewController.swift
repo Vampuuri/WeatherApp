@@ -96,6 +96,14 @@ class CityViewController: UIViewController, UITableViewDelegate, UITableViewData
         askFetchForNewData!()
     }
     
+    func tableView(_ tableView: UITableView, commit: UITableViewCell.EditingStyle, forRowAt: IndexPath) {
+        if commit == .delete {
+            cities.remove(at: forRowAt[1])
+            tableView.reloadData()
+        }
+    }
+
+    
     func tableView(_ tableView: UITableView, canEditRowAt: IndexPath) -> Bool {
         if canEditRowAt[1] == 0 {
             return false
