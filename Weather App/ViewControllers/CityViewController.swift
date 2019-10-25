@@ -38,7 +38,15 @@ class CityViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt: IndexPath) {
-        print(cities[didSelectRowAt[1]])
+        var useCity = ""
+        
+        if didSelectRowAt[1] != 0 {
+            useCity = cities[didSelectRowAt[1]]
+        }
+        
+        let defaultDB = UserDefaults.standard
+        defaultDB.set(useCity, forKey: "city")
+        defaultDB.synchronize()
     }
 
     
