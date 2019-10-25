@@ -22,7 +22,6 @@ class CityViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.isEditing = true
         
         tableView.selectRow(at: [0,0], animated: false, scrollPosition: UITableView.ScrollPosition.middle)
     }
