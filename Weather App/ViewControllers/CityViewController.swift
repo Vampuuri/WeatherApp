@@ -42,6 +42,13 @@ class CityViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func addCityButtonPressed(_ sender: Any) {
+        let text = newCityTextField!.text!
+        
+        if text != "" {
+            cities.append(text)
+            newCityTextField?.text = ""
+            tableView.reloadData()
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt: IndexPath) {
