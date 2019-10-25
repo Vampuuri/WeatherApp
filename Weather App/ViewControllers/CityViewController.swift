@@ -22,6 +22,7 @@ class CityViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.isEditing = true
         
         tableView.selectRow(at: [0,0], animated: false, scrollPosition: UITableView.ScrollPosition.middle)
     }
@@ -64,7 +65,14 @@ class CityViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         askFetchForNewData!()
     }
-
+    
+    func tableView(_ tableView: UITableView, canEditRowAt: IndexPath) -> Bool {
+        if canEditRowAt[1] == 0 {
+            return false
+        } else {
+            return true
+        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.cities.count
