@@ -12,6 +12,8 @@ import UIKit
 class CityViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var newCityTextField: UITextField!
+    @IBOutlet weak var newCityButton: UIButton!
+    @IBOutlet weak var startEditingButton: UIButton!
     
     var cities = ["Use GPS", "Helsinki", "Tampere", "Turku", "Oulu"]
     var askFetchForNewData: (() -> Void)?
@@ -67,6 +69,17 @@ class CityViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func deleteCitiesButtonPressed(_ sender: Any) {
+        if tableView.isEditing {
+            tableView.isEditing = false
+            newCityTextField.isEnabled = true
+            newCityButton.isEnabled = true
+            startEditingButton.setTitle("Delete cities from the list", for: .normal)
+        } else {
+            tableView.isEditing = true
+            newCityTextField.isEnabled = false
+            newCityButton.isEnabled = false
+            startEditingButton.setTitle("Stop editing", for: .normal)
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt: IndexPath) {

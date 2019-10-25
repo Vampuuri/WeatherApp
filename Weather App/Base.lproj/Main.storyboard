@@ -186,7 +186,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="City" id="0If-at-vbm"/>
                     <connections>
+                        <outlet property="newCityButton" destination="Pfc-HN-p11" id="0gO-li-gqY"/>
                         <outlet property="newCityTextField" destination="uhN-VB-V2i" id="m7S-hW-pjF"/>
+                        <outlet property="startEditingButton" destination="prL-0X-dkd" id="aSB-tP-p7v"/>
                         <outlet property="tableView" destination="gth-QQ-Nus" id="M7X-6u-EeV"/>
                         <outlet property="view" destination="H62-mg-uE9" id="CmQ-lC-Bih"/>
                     </connections>
