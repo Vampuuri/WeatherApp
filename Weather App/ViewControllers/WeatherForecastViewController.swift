@@ -23,11 +23,16 @@ class WeatherForecastViewController: UIViewController, UITableViewDelegate, UITa
         readForecastFromFile()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        readForecastFromFile()
+    }
+    
     func readForecastFromFile() {
         do {
             let data = try Data(contentsOf: URL(fileURLWithPath: FilePathFinder.getPathToDirectoryFile("forecast")))
             let forecast = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as! NSArray
             self.data = forecast
+            tableView.reloadData()
         } catch {
             NSLog("Error: file not found. Trying again in 0.5 seconds")
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
