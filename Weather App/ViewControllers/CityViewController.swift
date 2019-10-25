@@ -66,6 +66,9 @@ class CityViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    @IBAction func deleteCitiesButtonPressed(_ sender: Any) {
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt: IndexPath) {
         var useCity = ""
         
