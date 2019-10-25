@@ -12,11 +12,11 @@ class FilePathFinder {
     static func getPathToDirectoryFile(_ filename: String) -> String {
         // For now this code will return document directory
         
-        let documentDirectories =
-            NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory,
+        let cacheDirectories =
+            NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.cachesDirectory,
                                                 FileManager.SearchPathDomainMask.userDomainMask, true)
-        let documentDirectory = documentDirectories[0]
-        let pathWithFileName = "\(documentDirectory)/\(filename).txt"
+        let cacheDirectory = cacheDirectories[0]
+        let pathWithFileName = "\(cacheDirectory)/\(filename).txt"
         
         return pathWithFileName
     }
