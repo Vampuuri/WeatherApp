@@ -13,6 +13,7 @@ class CurrentWeatherViewController: UIViewController {
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
+    var refreshTimer: Timer?
     
     var weather: WeatherObject?
     
@@ -23,10 +24,16 @@ class CurrentWeatherViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        NSLog("Current Weather tab opened")
         self.readWeatherFromFile()
+        refreshTimer = Timer.scheduledTimer(timeInterval: 300.0, target: self, selector: #selector(readWeatherFromFile), userInfo: nil, repeats: true)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        refreshTimer?.invalidate()
+    }
+    
+    @objc
     func readWeatherFromFile() {
         do {
             let data = try Data(contentsOf: URL(fileURLWithPath: FilePathFinder.getPathToDirectoryFile("current")))
