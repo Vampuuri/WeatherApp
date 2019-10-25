@@ -23,6 +23,13 @@ class CityViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         
+        let defaultDB = UserDefaults.standard
+        let savedCitiesArray = defaultDB.array(forKey: "savedcities")
+        
+        if let savedCities = savedCitiesArray {
+            cities = savedCities as! [String]
+        }
+        
         tableView.selectRow(at: [0,0], animated: false, scrollPosition: UITableView.ScrollPosition.middle)
     }
     
@@ -39,6 +46,14 @@ class CityViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         tableView.selectRow(at: position, animated: false, scrollPosition: UITableView.ScrollPosition.middle)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        let defaultDB = UserDefaults.standard
+        defaultDB.set(cities, forKey: "savedcities")
+        defaultDB.synchronize()
     }
     
     @IBAction func addCityButtonPressed(_ sender: Any) {
