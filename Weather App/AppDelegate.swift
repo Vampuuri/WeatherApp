@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
     var weatherForecastViewController: WeatherForecastViewController?
     var cityViewController: CityViewController?
     
+    var updateTimer: Timer?
+    
     
     func doneFetching(data: Data?, response: URLResponse?, error: Error?) {
 
@@ -40,9 +42,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         
         fetchInitialWeatherData()
         
+        updateTimer = Timer.scheduledTimer(timeInterval: 300.0, target: self, selector: #selector(fetchInitialWeatherData), userInfo: nil, repeats: true)
+        
         return true
     }
     
+    @objc
     func fetchInitialWeatherData() {
         print("fetching data...")
         let defaultDB = UserDefaults.standard
@@ -75,7 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        updateTimer?.invalidate()
     }
     
     func locationManager(_ : CLLocationManager,didUpdateLocations: [CLLocation]) {
@@ -87,7 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Failed to find user's location: \(error.localizedDescription)");
+        print("Failed to find user's location: \(error.localizedDescription)")
     }
 }
 
