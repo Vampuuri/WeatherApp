@@ -145,7 +145,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="prL-0X-dkd">
                                 <rect key="frame" x="16" y="583" width="343" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="Delete cities from the list">
+                                <state key="normal" title="Edit cities">
                                     <color key="titleColor" red="0.9051570595854922" green="0.27297995049736079" blue="0.29546710940610571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
