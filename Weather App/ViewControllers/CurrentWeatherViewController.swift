@@ -13,6 +13,8 @@ class CurrentWeatherViewController: UIViewController {
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     var refreshTimer: Timer?
     
     var weather: WeatherObject?
@@ -20,6 +22,7 @@ class CurrentWeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NSLog("Current Weather")
+        activityIndicator.startAnimating()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,6 +52,11 @@ class CurrentWeatherViewController: UIViewController {
     }
     
     func updateWeather() {
+        if !activityIndicator.isHidden {
+            activityIndicator.stopAnimating()
+            activityIndicator.hidesWhenStopped = true
+        }
+            
         self.cityLabel.text = self.weather!.city
         self.temperatureLabel.text = String(format: "%.1f \u{00B0}C", self.weather!.temperature)
         

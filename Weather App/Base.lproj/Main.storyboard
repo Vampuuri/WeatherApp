@@ -58,6 +58,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Current weather" id="mok-64-sd8"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="LiQ-dK-B1o" id="B5H-nx-PNh"/>
                         <outlet property="cityLabel" destination="qWh-Tf-7QA" id="Bs0-fX-g5e"/>
                         <outlet property="iconImageView" destination="1o9-Y4-14d" id="Kf8-7S-kTB"/>
                         <outlet property="temperatureLabel" destination="A5s-4e-uTx" id="ENu-OU-xbq"/>
