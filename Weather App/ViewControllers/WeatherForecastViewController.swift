@@ -23,7 +23,8 @@ class WeatherForecastViewController: UIViewController, UITableViewDelegate, UITa
         readForecastFromFile()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         readForecastFromFile()
     }
     
@@ -34,8 +35,8 @@ class WeatherForecastViewController: UIViewController, UITableViewDelegate, UITa
             self.data = forecast
             tableView.reloadData()
         } catch {
-            NSLog("Error: file not found. Trying again in 0.5 seconds")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            NSLog("Error: file not found. Trying again in 1 second")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 self.readForecastFromFile()
             }
         }

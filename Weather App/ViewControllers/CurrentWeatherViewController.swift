@@ -22,8 +22,8 @@ class CurrentWeatherViewController: UIViewController {
         NSLog("Current Weather")
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.readWeatherFromFile()
         refreshTimer = Timer.scheduledTimer(timeInterval: 300.0, target: self, selector: #selector(readWeatherFromFile), userInfo: nil, repeats: true)
     }
@@ -41,8 +41,8 @@ class CurrentWeatherViewController: UIViewController {
             self.weather = wo
             updateWeather()
         } catch {
-            NSLog("Error: file not found. Trying again in 0.5 seconds")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            NSLog("Error: file not found. Trying again in 1.0 seconds")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 self.readWeatherFromFile()
             }
         }
