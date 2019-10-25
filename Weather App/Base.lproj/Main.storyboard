@@ -119,7 +119,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gth-QQ-Nus">
-                                <rect key="frame" x="0.0" y="61" width="375" height="557"/>
+                                <rect key="frame" x="0.0" y="61" width="375" height="473"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7k-fA-N09">
@@ -128,15 +128,31 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of a city" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uhN-VB-V2i">
+                                <rect key="frame" x="16" y="542" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pfc-HN-p11">
+                                <rect key="frame" x="16" y="580" width="343" height="30"/>
+                                <state key="normal" title="Add city"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="uhN-VB-V2i" firstAttribute="leading" secondItem="FPo-H7-5wh" secondAttribute="leading" constant="16" id="0dz-My-bJ9"/>
                             <constraint firstItem="A7k-fA-N09" firstAttribute="top" secondItem="FPo-H7-5wh" secondAttribute="top" constant="8" id="1pN-7O-2Pi"/>
                             <constraint firstItem="gth-QQ-Nus" firstAttribute="trailing" secondItem="FPo-H7-5wh" secondAttribute="trailing" id="7n7-27-EyJ"/>
+                            <constraint firstItem="Pfc-HN-p11" firstAttribute="leading" secondItem="FPo-H7-5wh" secondAttribute="leading" constant="16" id="Hlb-xP-6ZJ"/>
                             <constraint firstItem="FPo-H7-5wh" firstAttribute="trailing" secondItem="A7k-fA-N09" secondAttribute="trailing" constant="16" id="NLO-FR-JKD"/>
                             <constraint firstItem="A7k-fA-N09" firstAttribute="leading" secondItem="FPo-H7-5wh" secondAttribute="leading" constant="16" id="Rj8-c5-0rl"/>
-                            <constraint firstItem="gth-QQ-Nus" firstAttribute="bottom" secondItem="FPo-H7-5wh" secondAttribute="bottom" id="SSa-bR-ubp"/>
+                            <constraint firstItem="uhN-VB-V2i" firstAttribute="top" secondItem="gth-QQ-Nus" secondAttribute="bottom" constant="8" id="WoZ-QM-Vmp"/>
+                            <constraint firstItem="Pfc-HN-p11" firstAttribute="top" secondItem="uhN-VB-V2i" secondAttribute="bottom" constant="8" id="X01-23-ksA"/>
                             <constraint firstItem="gth-QQ-Nus" firstAttribute="leading" secondItem="FPo-H7-5wh" secondAttribute="leading" id="XbT-ft-znb"/>
+                            <constraint firstItem="FPo-H7-5wh" firstAttribute="trailing" secondItem="uhN-VB-V2i" secondAttribute="trailing" constant="16" id="YWp-FT-cQB"/>
+                            <constraint firstItem="FPo-H7-5wh" firstAttribute="bottom" secondItem="Pfc-HN-p11" secondAttribute="bottom" constant="8" id="gFb-o9-1ZC"/>
+                            <constraint firstItem="FPo-H7-5wh" firstAttribute="trailing" secondItem="Pfc-HN-p11" secondAttribute="trailing" constant="16" id="rcv-Z7-esW"/>
                             <constraint firstItem="gth-QQ-Nus" firstAttribute="top" secondItem="A7k-fA-N09" secondAttribute="bottom" constant="8" id="zFv-fw-BLd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FPo-H7-5wh"/>
