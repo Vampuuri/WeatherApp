@@ -23,6 +23,20 @@ class CityViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.selectRow(at: [0,0], animated: false, scrollPosition: UITableView.ScrollPosition.middle)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        let defaultDB = UserDefaults.standard
+        let chosenCity = defaultDB.string(forKey: "city")
+        var position = [0,0] as IndexPath
+        
+        if let city = chosenCity, city != "" {
+            if let cityPosition = cities.firstIndex(of: city) {
+                position = [0, cityPosition]
+            }
+        }
+        
+        tableView.selectRow(at: position, animated: false, scrollPosition: UITableView.ScrollPosition.middle)
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt: IndexPath) {
         print(cities[didSelectRowAt[1]])
     }
