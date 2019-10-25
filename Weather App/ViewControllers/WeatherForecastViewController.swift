@@ -12,12 +12,14 @@ import UIKit
 class WeatherForecastViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     
+    // Weather data
     var data: NSArray? = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         NSLog("Weather Forecast")
         
+        // set tableviews delegate and datasource to self
         tableView.delegate = self
         tableView.dataSource = self
         readForecastFromFile()
@@ -28,6 +30,7 @@ class WeatherForecastViewController: UIViewController, UITableViewDelegate, UITa
         readForecastFromFile()
     }
     
+    // read forecast data from file and set it to data
     func readForecastFromFile() {
         do {
             let data = try Data(contentsOf: URL(fileURLWithPath: FilePathFinder.getPathToDirectoryFile("forecast")))
@@ -35,6 +38,7 @@ class WeatherForecastViewController: UIViewController, UITableViewDelegate, UITa
             self.data = forecast
             tableView.reloadData()
         } catch {
+            // if fetch is not successful, try again in 1 second
             NSLog("Error: file not found. Trying again in 1 second")
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 self.readForecastFromFile()
@@ -46,18 +50,22 @@ class WeatherForecastViewController: UIViewController, UITableViewDelegate, UITa
         return self.data!.count
     }
     
+    // format cells the right way
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "someID")
         let dataobject = data![indexPath[1]] as! WeatherObject
         
+        // title label will have weather type and temperature
         cell.textLabel?.text = String(format: "\(dataobject.weatherType) %.1f \u{00B0}C", dataobject.temperature)
         
+        // date and time in subtitle is formatted here
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "dd/MM kk:mm"
         
         cell.detailTextLabel?.text = formatter.string(from: dataobject.dateAndTime! as Date)
         
+        // find right image to match weather type
         if dataobject.weatherType == WeatherType.Clear {
             cell.imageView?.image = UIImage(named: "clear")
         } else if dataobject.weatherType == WeatherType.Cloudy {

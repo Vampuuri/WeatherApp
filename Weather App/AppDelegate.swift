@@ -13,50 +13,60 @@ import CoreLocation
 class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate {
 
     var window: UIWindow?
+    // for location purposes
     var locationManager: CLLocationManager?
     
+    // all ViewControllers
     var currentWeatherViewController: CurrentWeatherViewController?
     var weatherForecastViewController: WeatherForecastViewController?
     var cityViewController: CityViewController?
     
+    // timer to fetch new weather data after some time
     var updateTimer: Timer?
     
-    
+    // this code came here without asking and i'm too scared to delete it
     func doneFetching(data: Data?, response: URLResponse?, error: Error?) {
 
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         
+        // gets all ViewController objects
         let tabBarController = self.window!.rootViewController as! UITabBarController
         self.currentWeatherViewController = tabBarController.viewControllers![0] as? CurrentWeatherViewController
         self.weatherForecastViewController = tabBarController.viewControllers![1] as? WeatherForecastViewController
         self.cityViewController = tabBarController.viewControllers![2] as? CityViewController
         
+        // gives cityViewController the method to fetch new data immediately
         self.cityViewController!.askFetchForNewData = self.fetchInitialWeatherData
         
+        // request location authorisation
         self.locationManager = CLLocationManager();
         self.locationManager?.requestAlwaysAuthorization();
         self.locationManager?.delegate = self;
         
+        // first of all fetch initial weatherdata
         fetchInitialWeatherData()
         
+        // timer fetches data again every 5 minutes
         updateTimer = Timer.scheduledTimer(timeInterval: 300.0, target: self, selector: #selector(fetchInitialWeatherData), userInfo: nil, repeats: true)
         
         return true
     }
     
+    // asks WeatherFetcher to fetch weather data
     @objc
     func fetchInitialWeatherData() {
-        print("fetching data...")
+        // check if there is city saved into user defaults
         let defaultDB = UserDefaults.standard
         let chosenCity = defaultDB.string(forKey: "city")
         
         if let city = chosenCity, city != "" {
+            // if there is city, use it to find data
             WeatherFetcher.fetchCurrentWeather(city: city)
             WeatherFetcher.fetchWeatherForecast(city: city)
         } else {
+            // if there isn't, use location
             self.locationManager?.requestLocation();
         }
     }
@@ -83,14 +93,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         updateTimer?.invalidate()
     }
     
+    // locates device and uses coordinates to fetch weather data
     func locationManager(_ : CLLocationManager,didUpdateLocations: [CLLocation]) {
         if let location = didUpdateLocations.last {
-            NSLog("Location found: \(location)")
             WeatherFetcher.fetchCurrentWeather(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             WeatherFetcher.fetchWeatherForecast(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         }
     }
     
+    // sometimes you just fail
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Failed to find user's location: \(error.localizedDescription)")
     }

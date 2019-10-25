@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Enum for different weathertypes
+// Int for codable purposes
 enum WeatherType: Int {
     case Clear
     case Cloudy
@@ -18,10 +20,12 @@ enum WeatherType: Int {
     case Misty
 }
 
+// WeatherObject holds all needed weatherdata
 class WeatherObject: NSObject, NSCoding {
     var city: String
     var temperature: Double
     var weatherType: WeatherType
+    // optional, because it is not needed in current weather
     var dateAndTime: NSDate?
     
     init(city: String, temperature: Double, weatherType: String) {

@@ -9,9 +9,9 @@
 import Foundation
 
 class FilePathFinder {
+    // Static function to get the path to cache directory
+    // Used by WeatherFetcher, CurrentWeatherViewController and WeatherForecastViewController
     static func getPathToDirectoryFile(_ filename: String) -> String {
-        // For now this code will return document directory
-        
         let cacheDirectories =
             NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.cachesDirectory,
                                                 FileManager.SearchPathDomainMask.userDomainMask, true)

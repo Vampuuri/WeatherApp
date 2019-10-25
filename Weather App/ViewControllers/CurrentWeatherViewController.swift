@@ -15,6 +15,7 @@ class CurrentWeatherViewController: UIViewController {
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    // timer to fetch new data and put it in place
     var refreshTimer: Timer?
     
     var weather: WeatherObject?
@@ -25,17 +26,20 @@ class CurrentWeatherViewController: UIViewController {
         activityIndicator.startAnimating()
     }
     
+    // always read weather from file and start timer
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.readWeatherFromFile()
         refreshTimer = Timer.scheduledTimer(timeInterval: 300.0, target: self, selector: #selector(readWeatherFromFile), userInfo: nil, repeats: true)
     }
     
+    // invalidate timer
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         refreshTimer?.invalidate()
     }
     
+    // reads weather data from file
     @objc
     func readWeatherFromFile() {
         do {
@@ -44,6 +48,7 @@ class CurrentWeatherViewController: UIViewController {
             self.weather = wo
             updateWeather()
         } catch {
+            // if fetch is not successful, try again in 1 second
             NSLog("Error: file not found. Trying again in 1.0 seconds")
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 self.readWeatherFromFile()
@@ -51,6 +56,7 @@ class CurrentWeatherViewController: UIViewController {
         }
     }
     
+    // updates all UI components to match current weather
     func updateWeather() {
         if !activityIndicator.isHidden {
             activityIndicator.stopAnimating()
