@@ -24,7 +24,8 @@ class CityViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.selectRow(at: [0,0], animated: false, scrollPosition: UITableView.ScrollPosition.middle)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         let defaultDB = UserDefaults.standard
         let chosenCity = defaultDB.string(forKey: "city")
         var position = [0,0] as IndexPath
