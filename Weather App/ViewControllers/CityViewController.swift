@@ -11,6 +11,8 @@ import UIKit
 
 class CityViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var newCityTextField: UITextField!
+    
     var cities = ["Use GPS", "Helsinki", "Tampere", "Turku", "Oulu"]
     var askFetchForNewData: (() -> Void)?
     
@@ -39,6 +41,9 @@ class CityViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.selectRow(at: position, animated: false, scrollPosition: UITableView.ScrollPosition.middle)
     }
     
+    @IBAction func addCityButtonPressed(_ sender: Any) {
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt: IndexPath) {
         var useCity = ""
         
@@ -65,4 +70,5 @@ class CityViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         return cell
     }
+
 }

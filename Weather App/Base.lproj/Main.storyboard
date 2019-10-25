@@ -137,6 +137,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pfc-HN-p11">
                                 <rect key="frame" x="16" y="580" width="343" height="30"/>
                                 <state key="normal" title="Add city"/>
+                                <connections>
+                                    <action selector="addCityButtonPressed:" destination="Kxq-qI-r7i" eventType="touchUpInside" id="PnK-VW-J9q"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -159,6 +162,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="City" id="0If-at-vbm"/>
                     <connections>
+                        <outlet property="newCityTextField" destination="uhN-VB-V2i" id="m7S-hW-pjF"/>
                         <outlet property="tableView" destination="gth-QQ-Nus" id="M7X-6u-EeV"/>
                         <outlet property="view" destination="H62-mg-uE9" id="CmQ-lC-Bih"/>
                     </connections>
