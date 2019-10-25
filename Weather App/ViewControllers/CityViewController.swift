@@ -103,6 +103,11 @@ class CityViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
 
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let movedObject = self.cities[sourceIndexPath.row]
+        cities.remove(at: sourceIndexPath.row)
+        cities.insert(movedObject, at: destinationIndexPath.row)
+    }
     
     func tableView(_ tableView: UITableView, canEditRowAt: IndexPath) -> Bool {
         if canEditRowAt[1] == 0 {
