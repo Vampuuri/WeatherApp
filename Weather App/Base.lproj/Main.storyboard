@@ -25,14 +25,14 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qWh-Tf-7QA">
-                                <rect key="frame" x="16" y="235.5" width="343" height="25.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <rect key="frame" x="16" y="236" width="343" height="25"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperature" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5s-4e-uTx">
-                                <rect key="frame" x="16" y="406" width="343" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="16" y="406" width="343" height="18.5"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -71,13 +71,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TXt-fj-2Lf">
-                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <rect key="frame" x="0.0" y="61" width="375" height="557"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forecast for 5 days" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0dq-hH-byw">
+                                <rect key="frame" x="16" y="28" width="343" height="25"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="TXt-fj-2Lf" firstAttribute="top" secondItem="ueh-8x-TD7" secondAttribute="top" id="8hr-C1-nFd"/>
+                            <constraint firstItem="0dq-hH-byw" firstAttribute="leading" secondItem="ueh-8x-TD7" secondAttribute="leading" constant="16" id="C10-es-yfb"/>
+                            <constraint firstItem="0dq-hH-byw" firstAttribute="top" secondItem="ueh-8x-TD7" secondAttribute="top" constant="8" id="Daf-Kj-Dhn"/>
+                            <constraint firstItem="TXt-fj-2Lf" firstAttribute="top" secondItem="0dq-hH-byw" secondAttribute="bottom" constant="8" id="FMw-HE-TWL"/>
+                            <constraint firstItem="ueh-8x-TD7" firstAttribute="trailing" secondItem="0dq-hH-byw" secondAttribute="trailing" constant="16" id="hJn-GK-tvL"/>
                             <constraint firstItem="TXt-fj-2Lf" firstAttribute="leading" secondItem="ueh-8x-TD7" secondAttribute="leading" id="n8T-ne-NaV"/>
                             <constraint firstItem="ueh-8x-TD7" firstAttribute="trailing" secondItem="TXt-fj-2Lf" secondAttribute="trailing" id="pD4-ti-Ttd"/>
                             <constraint firstItem="TXt-fj-2Lf" firstAttribute="bottom" secondItem="ueh-8x-TD7" secondAttribute="bottom" id="pgq-41-mTy"/>
@@ -103,16 +112,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gth-QQ-Nus">
-                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <rect key="frame" x="0.0" y="61" width="375" height="557"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7k-fA-N09">
+                                <rect key="frame" x="16" y="28" width="343" height="25"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="A7k-fA-N09" firstAttribute="top" secondItem="FPo-H7-5wh" secondAttribute="top" constant="8" id="1pN-7O-2Pi"/>
                             <constraint firstItem="gth-QQ-Nus" firstAttribute="trailing" secondItem="FPo-H7-5wh" secondAttribute="trailing" id="7n7-27-EyJ"/>
-                            <constraint firstItem="gth-QQ-Nus" firstAttribute="top" secondItem="FPo-H7-5wh" secondAttribute="top" id="IwD-5q-wlO"/>
+                            <constraint firstItem="FPo-H7-5wh" firstAttribute="trailing" secondItem="A7k-fA-N09" secondAttribute="trailing" constant="16" id="NLO-FR-JKD"/>
+                            <constraint firstItem="A7k-fA-N09" firstAttribute="leading" secondItem="FPo-H7-5wh" secondAttribute="leading" constant="16" id="Rj8-c5-0rl"/>
                             <constraint firstItem="gth-QQ-Nus" firstAttribute="bottom" secondItem="FPo-H7-5wh" secondAttribute="bottom" id="SSa-bR-ubp"/>
                             <constraint firstItem="gth-QQ-Nus" firstAttribute="leading" secondItem="FPo-H7-5wh" secondAttribute="leading" id="XbT-ft-znb"/>
+                            <constraint firstItem="gth-QQ-Nus" firstAttribute="top" secondItem="A7k-fA-N09" secondAttribute="bottom" constant="8" id="zFv-fw-BLd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FPo-H7-5wh"/>
                     </view>
