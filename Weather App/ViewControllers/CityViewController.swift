@@ -11,7 +11,7 @@ import UIKit
 
 class CityViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
-    var cities = ["Helsinki", "Tampere", "Loimaa"]
+    var cities = ["Use current location", "Helsinki", "Tampere", "Loimaa"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
