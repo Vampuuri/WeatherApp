@@ -73,7 +73,7 @@ class CityViewController: UIViewController, UITableViewDelegate, UITableViewData
             tableView.isEditing = false
             newCityTextField.isEnabled = true
             newCityButton.isEnabled = true
-            startEditingButton.setTitle("Delete cities from the list", for: .normal)
+            startEditingButton.setTitle("Edit cities", for: .normal)
         } else {
             tableView.isEditing = true
             newCityTextField.isEnabled = false
